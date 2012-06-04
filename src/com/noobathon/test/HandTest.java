@@ -2,6 +2,7 @@ package com.noobathon.test;
 
 import com.noobathon.blackjack.*;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -43,7 +44,7 @@ public class HandTest
 		hand.addCard(new Card(1));
 		hand.addCard(new Card(12));
 
-		assertTrue(hand.toString().equals("3 A Q "));
+		assertEquals("3 A Q", hand.toString());
 	}
 
 	@Test
@@ -53,7 +54,7 @@ public class HandTest
 		hand.addCard(new Card(1));
 		hand.addCard(new Card(12));
 
-		assertTrue(hand.toStringShowingTopCardOnly().equals("3 X X "));
+		assertEquals("3 X X", hand.toStringShowingTopCardOnly());
 	}
 
 }

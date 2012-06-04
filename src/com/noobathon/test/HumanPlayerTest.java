@@ -35,7 +35,7 @@ public class HumanPlayerTest
 	public void testLooseBet()
 	{
 		player.betChips(30);
-		player.looseBet();
+		player.loseBet();
 		assertTrue(player.getChipCount() == 470);
 	}
 

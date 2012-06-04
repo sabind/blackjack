@@ -2,7 +2,7 @@ package com.noobathon.test;
 
 import com.noobathon.blackjack.*;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +20,7 @@ public class DeckTest
 	@Test
 	public void testRemoveCard()
 	{
-		assertTrue(deck.numCardsRemaining() == 52);
+		assertEquals(52, deck.numCardsRemaining());
 
 		int threeCount = 0;
 		int jackCount = 0;
@@ -35,7 +35,8 @@ public class DeckTest
 			if (card.toString().equals("A"))
 				aceCount++;
 
-			// System.out.println(card);
+			// Use this to check your deck is shuffled
+			//System.out.println(card);
 		}
 		assertTrue(threeCount == 4);
 		assertTrue(jackCount == 4);

@@ -28,10 +28,10 @@ public class ComputerDealerTest
 	public void testTakeAction()
 	{
 		assertTrue(hit.getName().equals("hit"));
-		assertTrue(hit.getHand().getTotalHandValue() == 16);
+		assertTrue(hit.getHandValue()== 16);
 
-		assertTrue(hit.takeAction(null) == Action.Hit);
-		assertTrue(stay.takeAction(null) == Action.Stay);
+		assertTrue(hit.takeAction() == Action.Hit);
+		assertTrue(stay.takeAction() == Action.Stay);
 	}
 
 }

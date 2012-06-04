@@ -3,6 +3,7 @@ package com.noobathon.test;
 import com.noobathon.blackjack.*;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,18 +21,18 @@ public class PlayerTest
 	@Test
 	public void testNewHand()
 	{
-		player.getHand().addCard(new Card(13));
-		assertTrue(player.getHand().getTotalHandValue() == 10);
+		player.dealCard(new Card(13));
+		assertTrue(player.getHandValue() == 10);
 
 		player.newHand();
-		assertTrue(player.getHand().getTotalHandValue() == 0);
+		assertTrue(player.getHandValue() == 0);
 	}
 
 	@Test
 	public void testDealCard()
 	{
 		player.dealCard(new Card(13));
-		assertTrue(player.getHand().getTotalHandValue() == 10);
+		assertTrue(player.getHandValue() == 10);
 	}
 
 	@Test
@@ -43,25 +44,23 @@ public class PlayerTest
 	@Test
 	public void testToString()
 	{
-		assertTrue(player.toString().equals("me: Current Hand: "));
+		assertEquals("me: Current Hand: Empty Hand", player.toString());
 
 		player.dealCard(new Card(3));
 		player.dealCard(new Card(1));
 
-		assertTrue(player.toString().equals("me: Current Hand: 3 A "));
+		assertEquals("me: Current Hand: 3 A", player.toString());
 	}
 
 	@Test
 	public void testToStringShowingTopCardOnly()
 	{
-		assertTrue(player.toStringShowingTopCardOnly().equals(
-				"me: Current Hand: "));
+		assertEquals("me: Current Hand: Empty Hand", player.toStringShowingTopCardOnly());
 
 		player.dealCard(new Card(3));
 		player.dealCard(new Card(1));
 
-		assertTrue(player.toStringShowingTopCardOnly().equals(
-				"me: Current Hand: 3 X "));
+		assertEquals("me: Current Hand: 3 X", player.toStringShowingTopCardOnly());
 	}
 
 }
