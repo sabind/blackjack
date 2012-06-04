@@ -20,6 +20,7 @@ public class Hand
 	public int getTotalHandValue() 
 	{
 		int sum = 0;
+		
 		boolean acesLow = true;
 		boolean hasAces = false;
 		
@@ -30,7 +31,7 @@ public class Hand
 			sum += card.getCardValue(acesLow);
 		}
 		
-		if (hasAces && (sum + 10) < 21)
+		if (hasAces && (sum + 10) <= 21)
 			return sum + 10;
 		else
 			return sum;
@@ -76,4 +77,13 @@ public class Hand
 		}
 	}
 
+	public int getNumberOfCards() 
+	{
+		return hand.size();
+	}
+
+	public boolean isHandEmpty()
+	{
+		return hand.isEmpty();
+	}
 }
