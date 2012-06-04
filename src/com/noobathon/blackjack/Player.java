@@ -1,6 +1,6 @@
 package com.noobathon.blackjack;
 
-public class Player {
+public abstract class Player {
 	
 	private String name;
 	private Hand hand;
@@ -35,5 +35,13 @@ public class Player {
 	public String toString()
 	{
 		return name + ": Current Hand: " + hand; 
+	}
+
+	public boolean isHandEmpty() {
+		return hand.isHandEmpty();
+	}
+
+	public int getNumberOfCardsInHand() {
+		return hand.getNumberOfCards();
 	}
 }

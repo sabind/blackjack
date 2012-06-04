@@ -40,34 +40,14 @@ public class DeckTest
 		    thrown = true;
 		}
 		
+		assertEquals(0, deck.numCardsRemaining());
 		assertFalse(thrown);
 	}
 	
 	@Test
 	public void testDeckIsCompleteFiftyTwoCardDeck()
 	{
-		int threeCount = 0;
-		int jackCount = 0;
-		int aceCount = 0;
-		
-		for (int i = 0; i < 52; i++)
-		{
-			Card card = deck.removeCard();
-			if (card.toString().equals("3"))
-				threeCount++;
-			if (card.toString().equals("J"))
-				jackCount++;
-			if (card.toString().equals("A"))
-				aceCount++;
-
-			// Use this to check your deck is shuffled
-			//System.out.println(card);
-		}
-		assertTrue(threeCount == 4);
-		assertTrue(jackCount == 4);
-		assertTrue(aceCount == 4);
-
-		assertTrue(deck.numCardsRemaining() == 0);
+		testDeckForCompleteness();
 	}
 	
 	@Test
@@ -81,7 +61,11 @@ public class DeckTest
 	public void testNewDeckMakesANewCompleteFiftyTwoCardDeck()
 	{
 		deck.newDeck();
-		
+		testDeckForCompleteness();
+	}
+
+	private void testDeckForCompleteness() 
+	{
 		int threeCount = 0;
 		int jackCount = 0;
 		int aceCount = 0;
@@ -102,8 +86,6 @@ public class DeckTest
 		assertTrue(threeCount == 4);
 		assertTrue(jackCount == 4);
 		assertTrue(aceCount == 4);
-
-		assertTrue(deck.numCardsRemaining() == 0);
 	}
 
 }

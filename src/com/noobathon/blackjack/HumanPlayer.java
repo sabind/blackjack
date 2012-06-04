@@ -20,17 +20,26 @@ public class HumanPlayer extends Player {
 
 	public void betChips(int bet) 
 	{
-		chipsInPlay += bet;
+		if (bet > chips)
+		{
+			chipsInPlay += chips;
+			chips = 0;
+		}
+		else 
+		{
+			chips -= bet;
+			chipsInPlay += bet;
+		}
 	}
 
 	public void loseBet() 
 	{
-		chips -= chipsInPlay;
+		chipsInPlay = 0;
 	}
 
 	public void winBet() 
 	{
-		chips += chipsInPlay;
+		chips += 2 * chipsInPlay;
 	}
 
 }

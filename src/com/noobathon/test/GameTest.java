@@ -2,7 +2,7 @@ package com.noobathon.test;
 
 import com.noobathon.blackjack.*;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +20,7 @@ public class GameTest
 	@Test
 	public void testGetDeck()
 	{
-		assertTrue(game.getDeck().numCardsRemaining() == 52);
+		assertEquals(52, game.getDeck().numCardsRemaining());
 	}
 
 }

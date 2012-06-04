@@ -11,56 +11,104 @@ import org.junit.Test;
 public class PlayerTest
 {
 	private Player player;
+	private Player player2;
 
 	@Before
 	public void setUp() throws Exception
 	{
-		player = new HumanPlayer("me", 500);
+		player = new HumanPlayer("Bill", 500);
+		player2 = new HumanPlayer("bill", 500);
 	}
 
 	@Test
-	public void testNewHand()
+	public void testNewHandsStartOutEmpty()
 	{
-		player.dealCard(new Card(13));
-		assertTrue(player.getHandValue() == 10);
-
 		player.newHand();
-		assertTrue(player.getHandValue() == 0);
+		assertTrue(player.isHandEmpty());
 	}
-
+	
 	@Test
-	public void testDealCard()
+	public void testDealCarGivesThePlayerOnlyOneCard()
 	{
 		player.dealCard(new Card(13));
-		assertTrue(player.getHandValue() == 10);
+		assertEquals(1, player.getNumberOfCardsInHand());
+	}
+	
+	@Test
+	public void testHandsAddCardsCorrectly()
+	{
+		player.dealCard(new Card(13));
+		assertEquals(10, player.getHandValue());
 	}
 
 	@Test
-	public void testGetName()
+	public void testGetNameReturnsThePlayersNameCaseSensitive()
 	{
-		assertTrue(player.getName().equals("me"));
+		assertEquals("Bill", player.getName());
+		assertEquals("bill", player2.getName());
 	}
 
 	@Test
-	public void testToString()
+	public void testToStringReturnsCorrectlyWithEmptyHand()
 	{
-		assertEquals("me: Current Hand: Empty Hand", player.toString());
-
+		assertEquals("Bill: Current Hand: Empty Hand", player.toString());
+	}
+	
+	@Test
+	public void testToStringReturnsCorrectlyWithOneCardHand()
+	{
+		player.dealCard(new Card(3));
+		
+		assertEquals("Bill: Current Hand: 3", player.toString());
+	}
+	
+	@Test
+	public void testToStringReturnsCorrectlyWithTwoCardHand()
+	{
 		player.dealCard(new Card(3));
 		player.dealCard(new Card(1));
 
-		assertEquals("me: Current Hand: 3 A", player.toString());
+		assertEquals("Bill: Current Hand: 3 A", player.toString());
+	}
+	
+	@Test
+	public void testToStringReturnsCorrectlyWithMultiCardHand()
+	{
+		player.dealCard(new Card(3));
+		player.dealCard(new Card(12));
+		player.dealCard(new Card(1));
+		assertEquals("Bill: Current Hand: 3 Q A", player.toString());
 	}
 
 	@Test
-	public void testToStringShowingTopCardOnly()
+	public void testShowTopCardOnlyReturnsCorrectlyWithEmptyHand()
 	{
-		assertEquals("me: Current Hand: Empty Hand", player.toStringShowingTopCardOnly());
-
+		assertEquals("Bill: Current Hand: Empty Hand", player.toString());
+	}
+	
+	@Test
+	public void testShowTopCardOnlyReturnsCorrectlyWithOneCardHand()
+	{
+		player.dealCard(new Card(3));
+		assertEquals("Bill: Current Hand: 3", player.toStringShowingTopCardOnly());
+	}
+	
+	@Test
+	public void testShowTopCardOnlyReturnsCorrectlyWithTwoCardHand()
+	{
 		player.dealCard(new Card(3));
 		player.dealCard(new Card(1));
 
-		assertEquals("me: Current Hand: 3 X", player.toStringShowingTopCardOnly());
+		assertEquals("Bill: Current Hand: 3 X", player.toStringShowingTopCardOnly());
+	}
+	
+	@Test
+	public void testShowTopCardOnlyReturnsCorrectlyWithMultiCardHand()
+	{
+		player.dealCard(new Card(3));
+		player.dealCard(new Card(12));
+		player.dealCard(new Card(1));
+		assertEquals("Bill: Current Hand: 3 X X", player.toStringShowingTopCardOnly());
 	}
 
 }
