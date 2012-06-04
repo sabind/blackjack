@@ -27,6 +27,9 @@ public class Deck
 	
 	public Card removeCard()
 	{
+		if (cardsRemaining == 0)
+			return null;
+		
 		cardsRemaining--;
 		Card rtn = cards[deckIndex];
 		deckIndex++;

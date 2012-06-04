@@ -18,13 +18,38 @@ public class DeckTest
 	}
 
 	@Test
-	public void testRemoveCard()
+	public void decksShouldHaveFiftyTwoCards()
 	{
 		assertEquals(52, deck.numCardsRemaining());
+	}
+	
+	@Test
+	public void removingCardFromEmptyDeckShouldNotThrowExpeption()
+	{
+		boolean thrown = false;
 
+		try 
+		{
+			for (int i = 0; i < 53; ++i)
+			{
+				deck.removeCard();
+			}
+		}
+		catch (IndexOutOfBoundsException e) 
+		{
+		    thrown = true;
+		}
+		
+		assertFalse(thrown);
+	}
+	
+	@Test
+	public void testDeckIsCompleteFiftyTwoCardDeck()
+	{
 		int threeCount = 0;
 		int jackCount = 0;
 		int aceCount = 0;
+		
 		for (int i = 0; i < 52; i++)
 		{
 			Card card = deck.removeCard();
@@ -43,10 +68,42 @@ public class DeckTest
 		assertTrue(aceCount == 4);
 
 		assertTrue(deck.numCardsRemaining() == 0);
-
+	}
+	
+	@Test
+	public void testNewDeckMakesANewFiftyTwoCardDeck()
+	{
 		deck.newDeck();
-
 		assertTrue(deck.numCardsRemaining() == 52);
+	}
+	
+	@Test
+	public void testNewDeckMakesANewCompleteFiftyTwoCardDeck()
+	{
+		deck.newDeck();
+		
+		int threeCount = 0;
+		int jackCount = 0;
+		int aceCount = 0;
+		
+		for (int i = 0; i < 52; i++)
+		{
+			Card card = deck.removeCard();
+			if (card.toString().equals("3"))
+				threeCount++;
+			if (card.toString().equals("J"))
+				jackCount++;
+			if (card.toString().equals("A"))
+				aceCount++;
+
+			// Use this to check your deck is shuffled
+			//System.out.println(card);
+		}
+		assertTrue(threeCount == 4);
+		assertTrue(jackCount == 4);
+		assertTrue(aceCount == 4);
+
+		assertTrue(deck.numCardsRemaining() == 0);
 	}
 
 }
