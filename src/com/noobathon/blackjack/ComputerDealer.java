@@ -1,5 +1,8 @@
 package com.noobathon.blackjack;
 
+// Computer dealer also inherits from player so it already has a hand and everything else
+// it needs to manage a hand. 
+
 public class ComputerDealer extends Player
 {
 
@@ -11,9 +14,9 @@ public class ComputerDealer extends Player
 	public Action takeAction() 
 	{
 		if (this.getHandValue() < 17)
-			return Action.Hit;
+			return Action.Hit; //In blackjack dealers must hit if they have below 17 pts.
 		else
-			return Action.Stay;
-	}
+			return Action.Stay; //In blackjack dealers must stay if they have 17 pts.
+  }
 
 }

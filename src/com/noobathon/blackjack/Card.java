@@ -27,7 +27,7 @@ public class Card
 		if (faceValue == 1)
 			return "A";
 		else if (faceValue > 1 && faceValue < 11)
-			return "" + faceValue;
+			return "" + faceValue; // concatonating an empty string to something calls toString()
 		else if (faceValue == 11)
 			return "J";
 		else if (faceValue == 12)
@@ -35,6 +35,6 @@ public class Card
 		else if (faceValue == 13)
 			return "K";
 		else
-			return "NaC";
+			return "NaC"; //Not a Card
 	}
 }
