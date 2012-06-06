@@ -1,6 +1,8 @@
 package com.noobathon.test;
 
-import com.noobathon.blackjack.*;
+import com.noobathon.blackjack.Player;
+import com.noobathon.blackjack.HumanPlayer;
+import com.noobathon.blackjack.Card;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;

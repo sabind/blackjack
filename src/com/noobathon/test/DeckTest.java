@@ -1,6 +1,7 @@
 package com.noobathon.test;
 
-import com.noobathon.blackjack.*;
+import com.noobathon.blackjack.Deck;
+import com.noobathon.blackjack.Card;
 
 import static org.junit.Assert.*;
 

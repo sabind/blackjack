@@ -1,10 +1,10 @@
 package com.noobathon.test;
 
-
-import com.noobathon.blackjack.*;
+import com.noobathon.blackjack.ComputerDealer;
+import com.noobathon.blackjack.Card;
+import com.noobathon.blackjack.Action;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
