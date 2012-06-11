@@ -13,15 +13,15 @@ public class Deck
   // if they need to modify them. CONSTANTS are always are the beginning of the file.
 
   // We don't want to have "magic numbers" in the code. It make it hard to change if we need to 
-  // change the decksize we need to do it every time we see "52". Also someone may have added
+  // change the deck size we need to do it every time we see "52". Also someone may have added
   // another place using this "deck_size" if they had used a magic number and we didn't know 
-  // about their change then we'd introduce a bug by forgeting to change it. 
+  // about their change then we'd introduce a bug by forgetting to change it. 
   //
   // This way we only need to change this variable once and it makes all the changes for us. 
   public final int DECK_SIZE = 52;
 
   // Even though this variable is only used twice, unlike deck_size, it's good to have a final
-  // here too becaus it allows us to change the value without looking through the file for the
+  // here too because it allows us to change the value without looking through the file for the
   // place where we actually use the variable. It's easier to maintain this way.
   public final int TIMES_TO_SHUFFLE = 15;
 
@@ -81,7 +81,7 @@ public class Deck
       
 		for (int i = 0; i < NUMBER_OF_SUITS; ++i)
 		{
-			for (int j = 1; j <= DECK_SIZE%NUMBER_OF_SUITS; ++j)
+			for (int j = 1; j <= DECK_SIZE/NUMBER_OF_SUITS; ++j)
 			{
 				cards[deckIndex] = new Card(j);
 				deckIndex++;
