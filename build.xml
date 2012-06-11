@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="blackjack" basedir="." default="">
+    
+  <property name="src_test.dir" value="src/com/noobathon/test"/>
+  <property name="classes.dir" value="classes"/>
+  
+  <target name="clean" description="Delete all generated files">
+    <delete dir="classes.dir" failonerror="false"/>
+    <delete file="${ant.project.name}.jar"/>
+  </target>
+  <target name="compile_tests" description="Compiles the Tests">
+    <mkdir dir="${classes.dir}"/>
+    <javac srcdir="${src_test.dir}" destdir="classes"/>
+  </target>
+  <target name="b_tests" description="JARs the tests" depends="compile_tests">
+    <jar destfile="${ant.project.name}_tests.jar" basedir="classes"/>
+  </target>
+
+  <target name="test" description="Use the Task" depends="b_tests">
+    <taskdef name="blackjack_tests" classname="BlackjackTestSuite" classpath="${ant.project.name}_tests.jar"/>
+    <blackjack_tests/>
+  </target>
+
+</project>
