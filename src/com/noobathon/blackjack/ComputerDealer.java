@@ -17,6 +17,11 @@ public class ComputerDealer extends Player
 			return Action.Hit; //In blackjack dealers must hit if they have below 17 pts.
 		else
 			return Action.Stay; //In blackjack dealers must stay if they have 17 pts.
-  }
+    }
+
+    public boolean needsMoreCards()
+    {
+        return (this.getHandValue() < 17);
+    }
 
 }

@@ -24,6 +24,10 @@ public abstract class Player {
 		hand.addCard(card);
 	}
 
+    public void tossHand()
+    {
+        hand.clear();
+    }
 	public String getName() {
 		return name;
 	}
