@@ -1,21 +1,39 @@
 package com.noobathon.test;
 
+import com.noobathon.blackjack.Action;
+import com.noobathon.blackjack.Card;
 import com.noobathon.blackjack.ComputerDealer;
 
 import static org.junit.Assert.assertEquals;
 
+import org.easymock.EasyMock;
+import org.easymock.EasyMockSupport;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ComputerDealerTest
+public class ComputerDealerTest extends EasyMockSupport
 {
 	private ComputerDealer hit;
 	private ComputerDealer stay;
 	private ComputerDealer onTheFence;
+	
+	private Card seven;
+	private Card nine;
+	private Card ten;
+	private Card ace;
 
 	@Before
 	public void setUp() throws Exception
 	{
+		seven = createNiceMock(Card.class);
+		EasyMock.expect(seven.getCardValue(EasyMock.anyBoolean())).andStubReturn(7);
+		nine = createNiceMock(Card.class);
+		EasyMock.expect(nine.getCardValue(EasyMock.anyBoolean())).andStubReturn(9);
+		ten = createNiceMock(Card.class);
+		EasyMock.expect(ten.getCardValue(EasyMock.anyBoolean())).andStubReturn(10);
+		ace = createNiceMock(Card.class);
+		EasyMock.expect(ace.getCardValue(true)).andStubReturn(1);
+		EasyMock.expect(ace.getCardValue(false)).andStubReturn(11);
 		
 		hit = new ComputerDealer("hit");
 		hit.dealCard(new Card(7));
