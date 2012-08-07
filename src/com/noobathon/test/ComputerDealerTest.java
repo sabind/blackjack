@@ -1,8 +1,6 @@
 package com.noobathon.test;
 
 import com.noobathon.blackjack.ComputerDealer;
-import com.noobathon.blackjack.Card;
-import com.noobathon.blackjack.Action;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,6 +16,7 @@ public class ComputerDealerTest
 	@Before
 	public void setUp() throws Exception
 	{
+		
 		hit = new ComputerDealer("hit");
 		hit.dealCard(new Card(7));
 		hit.dealCard(new Card(9));
