@@ -33,7 +33,7 @@ public class Hand
 		
 		for (Card card : hand)
 		{
-			if (card.toString().equals("A"))
+			if (card.isAce())
 				hasAces = true;
 			sum += card.getCardValue(acesLow);
 		}
@@ -60,7 +60,7 @@ public class Hand
 			return "Empty Hand";
 		else
 		{
-			String revealFirst = hand.get(0).toString() + " ";
+			String revealFirst = hand.get(0).getCardString() + " ";
 			
       //This is a new way of moving across collections in Java.
       //It's similar to new languages.
@@ -80,11 +80,11 @@ public class Hand
 			return "Empty Hand";
 		else
 		{
-			String revealFirst = hand.get(0).toString() + " ";
+			String revealFirst = hand.get(0).getCardString()+ " ";
 			
 			for (Card card : hand.subList(1, hand.size()))
 			{
-				revealFirst += card.toString() + " ";
+				revealFirst += card.getCardString() + " ";
 			}
 			
 			return revealFirst.trim();
